@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:homeworkout_app/blocs/app_constant.dart';
 import 'package:homeworkout_app/blocs/authen_bloc.dart';
@@ -73,8 +75,8 @@ class _SigninAccountView extends State<SigninAccountView> with SigninAccountImpl
           ButtonCustom(
             title: "Dăng ký",
             onTap: (){
-              AppUtils.shared
-                  .pushWidget(context, RegisterVerifyMobileView());
+              // AppUtils.shared
+              //     .pushWidget(context, RegisterVerifyMobileView());
             },
           )
         ],

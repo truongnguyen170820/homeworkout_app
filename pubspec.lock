@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.1"
+  buffer:
+    dependency: transitive
+    description:
+      name: buffer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.7"
   build:
     dependency: transitive
     description:
@@ -178,6 +185,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.10"
+  executor:
+    dependency: transitive
+    description:
+      name: executor
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.1"
   fake_async:
     dependency: transitive
     description:
@@ -305,6 +319,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.2"
+  http_client:
+    dependency: "direct main"
+    description:
+      name: http_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.2"
   http_parser:
     dependency: transitive
     description:
