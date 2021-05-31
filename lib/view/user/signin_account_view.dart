@@ -8,6 +8,7 @@ import 'package:homeworkout_app/blocs/user/login_social_bloc.dart';
 import 'package:homeworkout_app/model/user/MemberData.dart';
 import 'package:homeworkout_app/utils/app_cache.dart';
 import 'package:homeworkout_app/utils/app_utils.dart';
+import 'package:homeworkout_app/utils/utilites.dart';
 import 'package:homeworkout_app/view/main_view.dart';
 import 'package:homeworkout_app/view/user/signin_view.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart'
@@ -60,8 +61,16 @@ class _SigninAccountView extends State<SigninAccountView> with SigninAccountImpl
       appBar: appbarDefault(context, ""),
       body: Column(
         children: [
+          TextField(
+            controller: _accountController,
+
+          ),
+          TextField(
+            controller: _passController,
+          ),
+
           ButtonCustom(
-            title: "DANg nhập",
+            title: "Đăng nhập",
             onTap: (){
               FocusScope.of(context).requestFocus(new FocusNode());
               if(!rememberMe){
@@ -73,7 +82,7 @@ class _SigninAccountView extends State<SigninAccountView> with SigninAccountImpl
             },
           ),
           ButtonCustom(
-            title: "Dăng ký",
+            title: "Đăng ký",
             onTap: (){
               // AppUtils.shared
               //     .pushWidget(context, RegisterVerifyMobileView());
@@ -85,23 +94,34 @@ class _SigninAccountView extends State<SigninAccountView> with SigninAccountImpl
   }
 
   @override
-  void onSignInSocialError(String message) {
+  void onSignInSocialError(String message) async{
+    await progressDialog.hide();
+    Utilities.showToast(context, message);
     // TODO: implement onSignInSocialError
   }
 
   @override
-  void onSignInSocialRequesting() {
+  void onSignInSocialRequesting() async {
+    await progressDialog.show();
     // TODO: implement onSignInSocialRequesting
   }
 
   @override
-  void onSignInSocialSuccess(List<MemberData> response) {
+  void onSignInSocialSuccess(List<MemberData> response)async {
     // TODO: implement onSignInSocialSuccess
+    await progressDialog.hide();
+    onPostSignIn();
   }
 
   @override
-  void onSigninAccountError(String message) {
+  void onSigninAccountError(String message) async{
     // TODO: implement onSigninAccountError
+    Future.delayed(Duration(seconds: AppConstants.DIALOG_DURATION))
+        .then((value) {
+      progressDialog.hide().whenComplete(() {
+        Utilities.showToast(context, message);
+      });
+    });
   }
 
   @override
