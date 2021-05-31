@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:homeworkout_app/utils/screen/screen_utils.dart';
 
+import 'animation_pushto.dart';
+
 
 class Global {
 }
@@ -36,6 +38,7 @@ void pop(BuildContext context, {dynamic result}) {
     context,
     result,
   );}
-// void pushTo(BuildContext context,Widget widget, ){
-//   Navigator.push(context, SlideRightRoute(page: widget,),);
-// }
+void pushTo(BuildContext context,Widget widget, ){
+  Navigator.push(context, SlideRightRoute(page: widget,),);
+}
+

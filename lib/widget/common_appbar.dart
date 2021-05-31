@@ -3,7 +3,28 @@ import 'package:homeworkout_app/utils/color_utils.dart';
 import 'package:homeworkout_app/widget/font_utils.dart';
 
 import 'global.dart';
-
+class CustomAppBar extends PreferredSize {
+  //
+  final Widget child;
+  final double height;
+  final Color color;
+  CustomAppBar({
+    @required this.child,
+    this.color,
+    this.height = kToolbarHeight,
+  });
+  @override
+  Size get preferredSize => Size.fromHeight(height);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: preferredSize.height,
+      color: color ?? Colors.red,
+      alignment: Alignment.center,
+      child: child,
+    );
+  }
+}
 Widget searchAppBar(BuildContext context, String title, Function onBackPress, SearchDelegate delegate) {
   return AppBar(
     leading: IconButton(
@@ -38,7 +59,6 @@ Widget searchAppBar(BuildContext context, String title, Function onBackPress, Se
     elevation: 0.0,
   );
 }
-
 Widget backAppBar(BuildContext context, String title) {
   return AppBar(
     leading: IconButton(
@@ -64,7 +84,6 @@ Widget backAppBar(BuildContext context, String title) {
     elevation: 0.0,
   );
 }
-
 Widget transAppBar(BuildContext context, String title) {
   return AppBar(
     leading: IconButton(
@@ -83,9 +102,6 @@ Widget transAppBar(BuildContext context, String title) {
     elevation: 0.0,
   );
 }
-
-
-
 Widget appbarDefault(BuildContext context, String title, {Color bgColor, List<Widget> actions,bool isShowLeading=true,bool isCenterTitle=true, dynamic result }) {
   return AppBar(
     leading:isShowLeading? IconButton(
